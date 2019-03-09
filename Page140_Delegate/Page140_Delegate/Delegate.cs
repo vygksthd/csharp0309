@@ -10,12 +10,22 @@ namespace Page140_Delegate
     { 
         static void Main(string[] args)
         {
-            Action<int, int> myMethod = Sum;
-            myMethod(10, 30);
+            Action myHello = SayHelloKr;
+            SayHello(myHello);
+            myHello = SayHelloEn;
+            SayHello(myHello);
         }
-        static void Sum(int i, int j)
+        static void SayHello(Action hello)
         {
-            Console.WriteLine(i + j);
+            hello();
+        }
+        static void SayHelloKr()
+        {
+            Console.WriteLine("안녕...");
+        }
+        static void SayHelloEn()
+        {
+            Console.WriteLine("Hello...");
         }
     }
 }
