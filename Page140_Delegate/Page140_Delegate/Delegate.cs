@@ -10,12 +10,12 @@ namespace Page140_Delegate
     { 
         static void Main(string[] args)
         {
-            Func<int, int, int> myMethod = Sum;
-            Console.WriteLine("두수 합 : {0}", myMethod(10, 30));
+            Action<int, int> myMethod = Sum;
+            myMethod(10, 30);
         }
-        static int Sum(int i, int j)
+        static void Sum(int i, int j)
         {
-            return i + j;
+            Console.WriteLine(i + j);
         }
     }
 }
