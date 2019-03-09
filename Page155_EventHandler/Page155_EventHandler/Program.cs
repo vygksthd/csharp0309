@@ -20,6 +20,15 @@ namespace Page155_EventHandler
         {
             EventPublisher p = new EventPublisher();
             p.MyEvent += new EventHandler(doAction);
+            p.MyEvent += doAction;
+            p.MyEvent += delegate (object sender, EventArgs e)
+            {
+                Console.WriteLine("MyEvent라는 이벤트 발생");
+            };
+            p.MyEvent += (sender, e) =>
+            {
+                Console.WriteLine("MyEvent라는 이벤트 발생");
+            };
             p.Do();
         }
 
