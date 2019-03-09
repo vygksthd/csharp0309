@@ -13,9 +13,9 @@ namespace Page156_이벤트_데이터_넘기기
     }
 
     class EventPublisher
-    {
-        public delegate void MyEventHandler(object sender, EventPublisherArgs e);
-        public event MyEventHandler MyEvent;
+    { 
+        //public delegate void MyEventHandler(object sender, EventPublisherArgs e);
+        public event EventHandler MyEvent;
 
         public void Do()
         {
@@ -32,13 +32,13 @@ namespace Page156_이벤트_데이터_넘기기
         static void Main(string[] args)
         {
             EventPublisher p = new EventPublisher();
-                p.MyEvent += new EventPublisher.MyEventHandler(doAction);
+            p.MyEvent += new EventHandler(doAction);
             p.Do();
         }
-        static void doAction(object sender, EventPublisherArgs e)
+        static void doAction(object sender, EventArgs e)
         {
             Console.WriteLine("MyEvent라는 이벤트 발생...");
-            Console.WriteLine("이벤트 매개변수 :" + e.myEventData);
+            Console.WriteLine("이벤트 매개변수 :" + ((EventPublisherArgs)e).myEventData);
         }
     }
 }
